@@ -1,18 +1,19 @@
 from flask import Flask, render_template,request,redirect,url_for
-import json
-import simplejson as json
 #from flask.wrappers import JSONMixin
 #from flask.wrappers import JSONMixin # For flask implementation    
 from bson import ObjectId # For ObjectId to work  
-from bson.json_util import dumps, loads
+from json import dumps, loads
+from flask.helpers import make_response
 from pymongo import MongoClient    
 import os 
 from time import time  
 import redis
+from flask_cors import CORS
 
 
     
 app = Flask(__name__) 
+CORS(app)
 
 #cache = redis.Redis(host='127.0.0.1', port=6379)
 #def get_hit_count():
@@ -39,6 +40,18 @@ app.config["MONGO_URI"] = "mongodb://127.0.0.1:27017"
 #with open('data.json', 'w') as file:
     #file.write(json_data)
 
+
+@app.route("/api/v1/test")
+def testget():
+    return {
+        'hello': 'world'
+    }
+
+@app.post("/api/v1/test")
+def testpost():
+    return {
+        'hello': 'world'
+    }
 
    
     

@@ -95,7 +95,6 @@ export default {
     };
   },
   methods: {
-        methods: {
     
     /**
      * Capitalize first character
@@ -143,7 +142,7 @@ export default {
       this.task = "";
     },
   },
-};
+}
 </script>
 
 <style scoped>
